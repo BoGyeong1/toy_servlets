@@ -22,7 +22,7 @@ public class Servlets extends HttpServlet {
         // biz with DB
         PollWithDB simpleWithDB = new PollWithDB();
         // 값 가져오기
-        ArrayList<HashMap> bundle_list = simpleWithDB.getList();
+        ArrayList<HashMap> bundle_list = PollWithDB.getList();
 
         // display
         PrintWriter printWriter = response.getWriter();
