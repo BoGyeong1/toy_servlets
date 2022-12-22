@@ -27,9 +27,11 @@ public class DetailServlets extends HttpServlet {
         PollWithDB pollWithDB = new PollWithDB();
         HashMap<String, Object> question = null;
         ArrayList<HashMap> example_list = null;
+        ArrayList<String> questionUIDs = null;
         try {
             question = pollWithDB.getQuestion(questions_Uid);
             example_list = pollWithDB.getExamples(questions_Uid);
+            questionUIDs = pollWithDB.getQuestionUIDs();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -38,6 +40,7 @@ public class DetailServlets extends HttpServlet {
         // Output with html
         request.setAttribute("questions", question);
         request.setAttribute("example_list", example_list);
+        request.setAttribute("questionUIDs", questionUIDs);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/poll/details.jsp");
         requestDispatcher.forward(request, response);
     }
